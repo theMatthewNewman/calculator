@@ -4,7 +4,8 @@ WORKDIR /app
 
 copy go.mod .
 copy main.go .
-copy helloworld.go .
+copy index.html .
+
 
 RUN go build -o bin .
 
