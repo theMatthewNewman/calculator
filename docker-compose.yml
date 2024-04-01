@@ -6,7 +6,7 @@ services:
     env_file:
       - .env
     ports:
-      - "8080:8080"
+      - "${PORT}:${PORT}"
     volumes:
       - .:/usr/src/app
     command: go run main.go -b 0.0.0.0
@@ -17,7 +17,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD}
       - POSTGRES_DB=${DB_NAME}
     ports:
-      - "5432:5432"
+      - "${DB_PORT}:${DB_PORT}"
     volumes:
       - postgres-db:/var/lib/postgresql/data
 

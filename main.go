@@ -2,8 +2,12 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net/http"
+	"os"
 	"text/template"
+
+	"github.com/joho/godotenv"
 )
 
 type Film struct {
@@ -12,10 +16,15 @@ type Film struct {
 }
 
 func main() {
+	godotenv.Load(".env")
+	portString := os.Getenv("PORT")
+	if portString == "" {
+		log.Fatal("PORT is not found in environment")
+	}
 	http.HandleFunc("/", helloworld)
 	http.HandleFunc("/add-film/", addfilm)
-	fmt.Println("server listening on port 8080...")
-	http.ListenAndServe(":8080", nil)
+	fmt.Printf("server listening on port %s...", portString)
+	http.ListenAndServe(":"+portString, nil)
 }
 
 func helloworld(w http.ResponseWriter, r *http.Request) {
