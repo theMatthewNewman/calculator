@@ -14,7 +14,7 @@ type Film struct {
 func main() {
 	http.HandleFunc("/", helloworld)
 	http.HandleFunc("/add-film/", addfilm)
-	fmt.Println("Server listening on port 8080...")
+	fmt.Println("server listening on port 8080...")
 	http.ListenAndServe(":8080", nil)
 }
 

@@ -1,13 +1,6 @@
 FROM golang:1.22.1
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
-copy go.mod .
-copy main.go .
-copy index.html .
-
-
-RUN go build -o bin .
-
-ENTRYPOINT ["/app/bin"]
-
+copy . .
+RUN go mod tidy
